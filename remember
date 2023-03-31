@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# remember - An easy command-line based reminder pad
+rememberfile="$HOME/.remember"
+
+if [ $# -eq 0 ] ; then
+  # Prompt the user for input and append whatever they write to the rememberfile
+
+  read -p 'Add some note! ' temp
+
+else
+  # Append any arguments passed to the script on the the .rememberfile.
+  echo "$@" >> $temp
+fi 
+
+date=$(date '+%Y-%m-%d')
+date+=$'\n'
+date+=$temp
+
+echo "$date" >> $rememberfile
+
+exit 0  
